@@ -53,5 +53,24 @@ Route::group(['middleware'=>'auth'],function(){
 			'prefix'=> 'user'
 		]);
 
+	Route::get('/data',[
+			'uses'=> 'UserController@getData',
+			'as'=> 'user.data',
+			'prefix'=> 'user'
+		]);
+
+	Route::post('/data',[
+			'uses'=> 'UserController@postData',
+			'as'=> 'user.data',
+			'prefix'=> 'user'
+		]);
+
+	Route::post('/tambah_keputusan',[
+			'uses'=> 'UserController@postTambahKeputusan',
+			'as'=> 'user.tambah_keputusan',
+			'prefix'=> 'user'
+		]);
+
+
 
 });

@@ -10,16 +10,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        </li>
-       
-      </ul>
-
-
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-   
-    <ul class="nav navbar-nav navbar-right">
-
+        
         @if(Auth::check()) 
       
         <li><a><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ Auth::user()->name }} </a></li>
@@ -30,6 +21,15 @@
         <li><a href=""><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
        @endif
+       
+      </ul>
+
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   
+    <ul class="nav navbar-nav navbar-right">
+
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
