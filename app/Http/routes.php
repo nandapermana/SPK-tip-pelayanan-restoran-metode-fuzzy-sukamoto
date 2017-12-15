@@ -71,6 +71,10 @@ Route::group(['middleware'=>'auth'],function(){
 			'prefix'=> 'user'
 		]);
 
-
+	Route::get('/detail/{id_hasil}',[
+			'uses'=> 'UserController@getHasil',
+			'as'=> 'user.hasil',
+			'prefix'=> 'user'
+		]);
 
 });

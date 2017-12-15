@@ -16,4 +16,8 @@
     <script type="text/javascript" src="{{URL::to('js/bootstrap.js')}}"></script>
 	@stack('scripts')
 </body>
+
+<footer>
+	@include('partials.footer')
+</footer>
 </html>

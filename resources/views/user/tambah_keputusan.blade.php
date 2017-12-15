@@ -14,7 +14,7 @@
 
 </div>
 <div class="panel panel-default">
-  <div class="panel-heading">Tambah Diagnosa</div>
+  <div class="panel-heading"></div>
 
   <div class="panel-body">
   	<form action="{{route('user.tambah_keputusan')}}" method="post">

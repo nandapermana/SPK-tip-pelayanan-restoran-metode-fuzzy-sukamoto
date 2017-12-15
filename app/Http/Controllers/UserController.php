@@ -60,7 +60,9 @@ class UserController extends Controller
     }
 
     public function getHistori(){
-    	return view('user.histori');
+        $id_user = Auth::user()->id;
+        $hasil= hasil::where('user_id',$id_user)->get();
+    	return view('user.histori')->with(['hasil'=> $hasil]);
     }
 
     public function getData(){
@@ -111,6 +113,8 @@ class UserController extends Controller
 
 
         //Nilai Keanggoataan pembayaran 
+        //fuzzyfikasi
+
         $bayar_max = $data->pembayaran_tertinggi;
         $bayar_min = $data->pembayaran_terendah;
         $pembagi_bayar = $bayar_max-$bayar_min;
@@ -135,7 +139,8 @@ class UserController extends Controller
         //$miu_tips_tinggi=($tips_min-$total_biaya)/$pembagi_tips;
 
 
-        //INFERENSI 
+        //INFERENSI RULES 
+
         $a1=0;
         if ($miu_bayar_rendah>$miu_layan_rendah) {
             # code...
@@ -203,5 +208,12 @@ class UserController extends Controller
 
 
         return redirect()->back();
+    }
+
+    public function getHasil($id_hasil){
+        $hasil = hasil::find($id_hasil);
+        $data_id = $hasil->data_id;
+        $data = Data::find($data_id);
+        return view('user.halaman_hasil')->with(['hasil'=> $hasil , 'data' => $data ]);
     }
 }

@@ -20,12 +20,16 @@
 	  			<thead>
 	  				<tr>
 	  					<th>Id Histori</th>
+	  					<th>Detil</th>
 	  				</tr>
 	  			</thead>
 	  			<tbody>
+	  				@foreach($hasil as $h)
 	  				<tr>
-	  					<td><a href="#" type="button" class="btn btn-primary">Lihat</a>
+	  					<td>{{$h->id}}</td>
+	  					<td><a href="{{route ('user.hasil',['id_hasil'=> $h->id]) }}" type="button" class="btn btn-primary">Lihat</a></td>
 	  				</tr>
+	  				@endforeach
 	  			</tbody>
 	  		</table>
 	  </div>
