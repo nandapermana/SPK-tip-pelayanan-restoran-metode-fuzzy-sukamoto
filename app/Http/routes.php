@@ -77,4 +77,28 @@ Route::group(['middleware'=>'auth'],function(){
 			'prefix'=> 'user'
 		]);
 
+	Route::get('/edit/{id_hasil}',[
+			'uses'=> 'UserController@getEdit',
+			'as'=> 'user.edit',
+			'prefix'=> 'user'
+		]);
+
+	Route::post('/edit/{id_data}',[
+			'uses'=> 'UserController@postEdit',
+			'as'=> 'user.edit',
+			'prefix'=> 'user'
+		]);
+
+	Route::get('/alert/{id_data}',[
+			'uses'=> 'UserController@getAlert',
+			'as'=> 'user.alert',
+			'prefix'=> 'user'
+		]);
+
+	Route::get('/delete/{id_data}',[
+			'uses'=> 'UserController@getDelete',
+			'as'=> 'user.delete',
+			'prefix'=> 'user'
+		]);
+
 });

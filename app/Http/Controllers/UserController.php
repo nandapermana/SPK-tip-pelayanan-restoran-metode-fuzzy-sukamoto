@@ -216,4 +216,65 @@ class UserController extends Controller
         $data = Data::find($data_id);
         return view('user.halaman_hasil')->with(['hasil'=> $hasil , 'data' => $data ]);
     }
+
+    public function getEdit($id_hasil){
+        $data=  data::find($id_hasil);
+
+         return view('user.edit')->with(['data' => $data]);
+    }
+
+    public function postEdit($id_data, Request $req ){
+         $this->validate($req, [
+            'bayar-max'     => 'numeric|required|min:1000|max:10000000',
+            'bayar-min'     => 'numeric|required|min:0   |max:1000000',
+            'tips-max'      => 'numeric|required|min:1000|max:1000000',
+            'tips-min'      => 'numeric|required|min:0   |max:1000000',
+            'layan-max'     => 'numeric|required',
+            'layan-min'     => 'numeric|required',
+         ]);
+
+        $data= Data::find($id_data);
+        $data->pembayaran_tertinggi = $req->input('bayar-max');
+        $data->pembayaran_terendah  = $req->input('bayar-min');
+
+        $data->tips_tertinggi = $req->input('tips-max');
+        $data->tips_terendah = $req->input('tips-min');
+
+        $data->pelayanan_tertinggi = $req->input('layan-max');
+        $data->pelayanan_terendah = $req->input('layan-min');
+
+        $data->user_id= Auth::user()->id;
+        $data->save();
+
+        $message="data berhasil dibuat";
+        return redirect()->route('user.data')->with(['message' => $message]);
+
+    }
+
+    public function getAlert($id_data){
+        $data = Data::find($id_data);
+        return view('user.alert')->with(['data' => $data]);
+        /*
+        $buku->delete();
+        $message = "Data berhasil di hapus";
+        return redirect()->back()->with(['success_message'=> $message]);*/
+    }
+
+    public function getDelete($id_data){
+        $data = Data::find($id_data);
+        $hasil = hasil::where('data_id',$id_data)->get();
+
+        foreach ($hasil as $h) {
+            if ($h->data_id == $id_data) {
+                $h->delete();
+            }
+        }
+
+        $data->delete();
+        
+        $message = "Data berhasil di hapus";
+        return redirect()->route('user.data')->with(['success_message'=> $message]);
+    }
+
+
 }

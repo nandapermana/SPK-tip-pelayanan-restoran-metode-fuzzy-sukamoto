@@ -78,6 +78,7 @@
   		 	<th> Pelayanan min</th>
   		 	<th> tips max</th>
   		 	<th> tips min</th>
+  		 	<th> hapus </th>
   		 </tr>
   	</thead>
   	<tbody>
@@ -90,6 +91,7 @@
   			<td>{{$d->pelayanan_terendah}}</td>
   			<td>{{$d->tips_tertinggi}}</td>
   			<td>{{$d->tips_terendah}}</td>
+  			<td><a href="{{route('user.alert' , ['id_data'=> $d->id] )}}" type="button" class="btn btn-danger btn-xs"> hapus</a></td>
   		</tr>
   		@endforeach
   	</tbody>

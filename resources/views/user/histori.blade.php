@@ -20,6 +20,7 @@
 	  			<thead>
 	  				<tr>
 	  					<th>Id Histori</th>
+	  					<th>ID data</th>
 	  					<th>Detil</th>
 	  				</tr>
 	  			</thead>
@@ -27,6 +28,7 @@
 	  				@foreach($hasil as $h)
 	  				<tr>
 	  					<td>{{$h->id}}</td>
+	  					<td>{{$h->data_id}}</td>
 	  					<td><a href="{{route ('user.hasil',['id_hasil'=> $h->id]) }}" type="button" class="btn btn-primary">Lihat</a></td>
 	  				</tr>
 	  				@endforeach
