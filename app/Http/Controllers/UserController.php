@@ -206,8 +206,8 @@ class UserController extends Controller
         
          $hasil->save();
 
-
-        return redirect()->back();
+         $success_message= 'Data berhasil ditambah';
+        return redirect()->route('user.home')->with(['success_message'=> $success_message]);
     }
 
     public function getHasil($id_hasil){
@@ -229,8 +229,8 @@ class UserController extends Controller
             'bayar-min'     => 'numeric|required|min:0   |max:1000000',
             'tips-max'      => 'numeric|required|min:1000|max:1000000',
             'tips-min'      => 'numeric|required|min:0   |max:1000000',
-            'layan-max'     => 'numeric|required',
-            'layan-min'     => 'numeric|required',
+            'layan-max'     => 'numeric|required|min:-1',
+            'layan-min'     => 'numeric|required|min:-1',
          ]);
 
         $data= Data::find($id_data);
